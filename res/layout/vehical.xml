@@ -12,6 +12,14 @@
         android:layout_marginTop="31dp"
         android:text="Vehical" />
 
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="394dp"
+        android:layout_above="@+id/btn_confirm"
+        android:layout_below="@+id/textView1"
+        android:layout_weight="0.72" />
+    
     <Button
         android:id="@+id/btn_confirm"
         android:layout_width="wrap_content"
