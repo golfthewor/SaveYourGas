@@ -61,6 +61,14 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
+		} else if (id == R.id.action_home) {
+
+			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+
+		} else if (id == R.id.action_history) {
+			Intent intent = new Intent(getApplicationContext(), History.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

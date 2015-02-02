@@ -3,6 +3,16 @@
     tools:context="com.project2.saveyourgas.MainActivity" >
 
     <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_home"/>
+    <item
+        android:id="@+id/action_history"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_history"/>
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"

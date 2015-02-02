@@ -8,6 +8,11 @@
 package com.project2.saveyourgas;
 
 public final class R {
+    public static final class array {
+        public static final int engine_size=0x7f0a0001;
+        public static final int gas=0x7f0a0002;
+        public static final int vehical_type=0x7f0a0000;
+    }
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
@@ -464,40 +469,60 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020020;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0021;
-        public static final int adjust_height=0x7f0b0000;
-        public static final int adjust_width=0x7f0b0001;
-        public static final int book_now=0x7f0b0010;
-        public static final int btn_confirm=0x7f0b001e;
-        public static final int btn_history=0x7f0b0018;
-        public static final int btn_map=0x7f0b001c;
-        public static final int btn_menu=0x7f0b001b;
-        public static final int btn_planning=0x7f0b0017;
-        public static final int btn_view=0x7f0b001a;
-        public static final int buyButton=0x7f0b000c;
-        public static final int buy_now=0x7f0b0011;
-        public static final int buy_with_google=0x7f0b0012;
-        public static final int classic=0x7f0b0014;
-        public static final int donate_with_google=0x7f0b0013;
-        public static final int grayscale=0x7f0b0015;
-        public static final int holo_dark=0x7f0b0007;
-        public static final int holo_light=0x7f0b0008;
-        public static final int hybrid=0x7f0b0003;
-        public static final int listview=0x7f0b0020;
-        public static final int map=0x7f0b001d;
-        public static final int match_parent=0x7f0b000e;
-        public static final int monochrome=0x7f0b0016;
-        public static final int none=0x7f0b0002;
-        public static final int normal=0x7f0b0004;
-        public static final int production=0x7f0b0009;
-        public static final int sandbox=0x7f0b000a;
-        public static final int satellite=0x7f0b0005;
-        public static final int selectionDetails=0x7f0b000d;
-        public static final int strict_sandbox=0x7f0b000b;
-        public static final int terrain=0x7f0b0006;
-        public static final int textView1=0x7f0b0019;
-        public static final int textView2=0x7f0b001f;
-        public static final int wrap_content=0x7f0b000f;
+        public static final int action_history=0x7f0c0034;
+        public static final int action_home=0x7f0c0033;
+        public static final int action_settings=0x7f0c0035;
+        public static final int adjust_height=0x7f0c0000;
+        public static final int adjust_width=0x7f0c0001;
+        public static final int book_now=0x7f0c0010;
+        public static final int btnConfirm=0x7f0c0032;
+        public static final int btnMap=0x7f0c002e;
+        public static final int btn_confirm=0x7f0c0023;
+        public static final int btn_history=0x7f0c0018;
+        public static final int btn_planning=0x7f0c0017;
+        public static final int buyButton=0x7f0c000c;
+        public static final int buy_now=0x7f0c0011;
+        public static final int buy_with_google=0x7f0c0012;
+        public static final int classic=0x7f0c0014;
+        public static final int distanceResult=0x7f0c002b;
+        public static final int donate_with_google=0x7f0c0013;
+        public static final int gasResult=0x7f0c0029;
+        public static final int grayscale=0x7f0c0015;
+        public static final int holo_dark=0x7f0c0007;
+        public static final int holo_light=0x7f0c0008;
+        public static final int hybrid=0x7f0c0003;
+        public static final int map=0x7f0c0022;
+        public static final int match_parent=0x7f0c000e;
+        public static final int monochrome=0x7f0c0016;
+        public static final int none=0x7f0c0002;
+        public static final int normal=0x7f0c0004;
+        public static final int priceResult=0x7f0c002d;
+        public static final int production=0x7f0c0009;
+        public static final int progressBar1=0x7f0c001b;
+        public static final int progressBar2=0x7f0c001d;
+        public static final int progressBar3=0x7f0c001f;
+        public static final int progressBar4=0x7f0c0021;
+        public static final int sandbox=0x7f0c000a;
+        public static final int satellite=0x7f0c0005;
+        public static final int selectionDetails=0x7f0c000d;
+        public static final int spinner1=0x7f0c002f;
+        public static final int spinner2=0x7f0c0030;
+        public static final int spinner3=0x7f0c0031;
+        public static final int strict_sandbox=0x7f0c000b;
+        public static final int terrain=0x7f0c0006;
+        public static final int textView1=0x7f0c0019;
+        public static final int textView2=0x7f0c001a;
+        public static final int textView3=0x7f0c001c;
+        public static final int textView4=0x7f0c001e;
+        public static final int textView5=0x7f0c0020;
+        public static final int tripResult=0x7f0c0025;
+        public static final int txtDistance=0x7f0c002a;
+        public static final int txtGas=0x7f0c0028;
+        public static final int txtPrice=0x7f0c002c;
+        public static final int txtTrip=0x7f0c0024;
+        public static final int txtVehical=0x7f0c0026;
+        public static final int vehicalResult=0x7f0c0027;
+        public static final int wrap_content=0x7f0c000f;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -505,23 +530,24 @@ containing a value of this type.
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int history=0x7f030001;
-        public static final int history_map=0x7f030002;
-        public static final int history_result=0x7f030003;
-        public static final int mapping=0x7f030004;
-        public static final int result=0x7f030005;
-        public static final int splash=0x7f030006;
-        public static final int vehical=0x7f030007;
+        public static final int mapping=0x7f030002;
+        public static final int result=0x7f030003;
+        public static final int splash=0x7f030004;
+        public static final int vehical=0x7f030005;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int main=0x7f0b0000;
     }
     public static final class raw {
         public static final int gtm_analytics=0x7f040000;
     }
     public static final class string {
         public static final int accept=0x7f060002;
+        public static final int action_history=0x7f060027;
+        public static final int action_home=0x7f060026;
         public static final int action_settings=0x7f060025;
         public static final int app_name=0x7f060023;
+        public static final int average=0x7f06002d;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
         public static final int common_android_wear_notification_needs_update_text=0x7f060009;
@@ -621,12 +647,22 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060020;
+        public static final int confirm=0x7f060029;
         public static final int create_calendar_message=0x7f060005;
         public static final int create_calendar_title=0x7f060004;
         public static final int decline=0x7f060003;
+        public static final int engine=0x7f060030;
+        public static final int engine_size=0x7f060031;
+        public static final int gas=0x7f060032;
         public static final int hello_world=0x7f060024;
+        public static final int map=0x7f06002a;
+        public static final int result=0x7f06002b;
         public static final int store_picture_message=0x7f060001;
         public static final int store_picture_title=0x7f060000;
+        public static final int total=0x7f06002c;
+        public static final int trip_name=0x7f060028;
+        public static final int vehical=0x7f06002e;
+        public static final int vehical_type=0x7f06002f;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

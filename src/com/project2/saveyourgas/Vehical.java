@@ -1,124 +1,101 @@
 package com.project2.saveyourgas;
 
-import java.util.ArrayList;
-
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
+import android.view.View.OnClickListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.Spinner;
 
-public class Vehical extends Activity{
-	
-	private Intent intent_confirm;
-	private Button btn_confirm;
-	
-	private ListView listview;
-	private ArrayAdapter<String> AdapterXML;
-	private ArrayList<String> ListitemXML = new ArrayList<String>();
-	
-	private SoapPrimitive Results = null;
-	
-	private static String URL = "http://www.pttplc.com/webservice/pttinfo.asmx?WSDL";
-	private static String NAMESPACE = "http://www.pttplc.com/ptt_webservice/";
-	private static String METHOD_NAME = "CurrentOilPrice";
-	private static String SOAP_ACTION = "http://www.pttplc.com/ptt_webservice/CurrentOilPrice";
-	
+public class Vehical extends Activity {
+
+	private Spinner spinner1, spinner2, spinner3;
+	private Button btnConfirm;
+	private Intent intent_result;
+	private Intent intent;
+
+	private String vehical;
+	private String engine;
+	private String gas;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState){
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.vehical);
-		
-		/*btn_confirm*/
-		btn_confirm = (Button) findViewById(R.id.btn_confirm);
-		intent_confirm = new Intent(getApplicationContext(), Result.class);
-		
-		listview= (ListView) findViewById(R.id.listview);
-		GetResponseXML();
-		
-		btn_confirm.setOnClickListener(new OnClickListener() {
-			
+
+		addListenerOnButton();
+		addListenerOnSpinnerItemSelection();
+
+	}
+
+	private void addListenerOnButton() {
+		// TODO Auto-generated method stub
+		spinner1 = (Spinner) findViewById(R.id.spinner1);
+		spinner2 = (Spinner) findViewById(R.id.spinner2);
+		spinner3 = (Spinner) findViewById(R.id.spinner3);
+
+		btnConfirm = (Button) findViewById(R.id.btnConfirm);
+		btnConfirm.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(intent_confirm);
+				vehical = String.valueOf(spinner1.getSelectedItem());
+				engine = String.valueOf(spinner2.getSelectedItem());
+				gas = String.valueOf(spinner3.getSelectedItem());
+
+				intent_result = new Intent(getApplicationContext(),
+						Result.class);
+				intent_result.putExtra("vehical", vehical);
+				intent_result.putExtra("engine", engine);
+				intent_result.putExtra("gas", gas);
+
+				startActivity(intent_result);
+
 			}
 		});
 	}
 
-	private void GetResponseXML() {
+	private void addListenerOnSpinnerItemSelection() {
 		// TODO Auto-generated method stub
-		
-		Thread s = new Thread() {
-    		
-    		@Override
-    		public void run() {
+		spinner1 = (Spinner) findViewById(R.id.spinner1);
+		spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
-    			try {
-    				
-    				SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-    				request.addProperty("Language", "EN");
-    				
-    				SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-    				envelope.dotNet = true;
-    				envelope.setOutputSoapObject(request);
-    				
-    				HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-					androidHttpTransport.call(SOAP_ACTION, envelope);
-					SoapPrimitive resultRequestSOAP = (SoapPrimitive)envelope.getResponse();
-					Results = resultRequestSOAP;
-					
-				} catch (Exception e) {
-					// TODO: handle exception
-					Results= null;
-				} finally {
-					if(Results == null) {
-						Log.e("WebServiceExample", "Soap object Error");
-				
-					} else {
-						pareser();
-					
-					}
-				}
-    			
-    		}
+		spinner2 = (Spinner) findViewById(R.id.spinner2);
+		spinner2.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
-    	};
-    	s.start();
-		
+		spinner3 = (Spinner) findViewById(R.id.spinner3);
+		spinner3.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
 	}
-	
-	 public void pareser() {
-	    	
-	    	ListitemXML.add(Results.toString());
-	    	Listing();
 
-	    }
-	    
-	    public void Listing() {
-	    	Runnable run = new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					AdapterXML = new ArrayAdapter<String>(Vehical.this, android.R.layout.simple_list_item_1,
-							ListitemXML);
-					AdapterXML.notifyDataSetChanged();
-					listview.setAdapter(AdapterXML);
-				}
-			};
-			this.runOnUiThread(run);
-	    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		} else if (id == R.id.action_home) {
 
+			intent = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+
+		} else if (id == R.id.action_history) {
+			Intent intent = new Intent(getApplicationContext(), History.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }
