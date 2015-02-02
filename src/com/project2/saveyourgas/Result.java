@@ -8,11 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class Result extends Activity {
 
+	private Intent intent_map;
+	private Button btn_map;
 	final Context context = this;
 	private Intent intent;
 
@@ -59,6 +64,18 @@ public class Result extends Activity {
 
 		// show it
 		alertDialog.show();
+		
+		/*btn_map*/
+		btn_map = (Button) findViewById(R.id.btnMap);
+		intent_map = new Intent(getApplicationContext(), Mapping.class);
+		btn_map.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intent_map);
+			}
+		});
 	}
 
 	@Override
