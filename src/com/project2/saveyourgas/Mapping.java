@@ -9,7 +9,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
@@ -25,9 +27,12 @@ import android.widget.Toast;
 
 public class Mapping extends FragmentActivity {
 
-	private Intent intent_confirm;
-	private Button btn_confirm;
+	private Button btnConfirm;
 
+	private Intent intent_yes;
+	private Intent intent_no;
+
+	
 	GoogleMap mMap;
 	Marker mMarker;
 	LocationManager lm;
@@ -60,7 +65,7 @@ public class Mapping extends FragmentActivity {
 		});
 
 		/* btn_confirm */
-		btn_confirm = (Button) findViewById(R.id.btn_confirm);
+		/*btn_confirm = (Button) findViewById(R.id.btn_confirm);
 		intent_confirm = new Intent(getApplicationContext(), Vehical.class);
 		btn_confirm.setOnClickListener(new OnClickListener() {
 
@@ -68,6 +73,52 @@ public class Mapping extends FragmentActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startActivity(intent_confirm);
+			}
+		});*/
+		
+		btnConfirm = (Button) findViewById(R.id.btnConfirm);
+		btnConfirm.setOnClickListener(new OnClickListener() {
+
+			private Context context;
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+						context);
+				alertDialogBuilder
+						.setMessage(
+								"Would you like to travel by private vehicle or not.")
+						.setCancelable(false)
+						.setPositiveButton("Yes",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										// Go to vehical page.
+										intent_yes = new Intent(
+												getApplicationContext(),
+												Vehical.class);
+										startActivity(intent_yes);
+									}
+								})
+						.setNegativeButton("No",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										// Go to result page.
+										intent_no = new Intent(
+												getApplicationContext(),
+												Result.class);
+										startActivity(intent_no);
+									}
+								});
+
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();
+
+				// show it
+				alertDialog.show();
 			}
 		});
 	}
