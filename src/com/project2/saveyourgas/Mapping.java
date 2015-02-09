@@ -32,6 +32,7 @@ public class Mapping extends FragmentActivity {
 	private Intent intent_yes;
 	private Intent intent_no;
 
+	final Context context = this;
 	
 	GoogleMap mMap;
 	Marker mMarker;
@@ -76,15 +77,13 @@ public class Mapping extends FragmentActivity {
 			}
 		});*/
 		
-		btnConfirm = (Button) findViewById(R.id.btnConfirm);
+		btnConfirm = (Button) findViewById(R.id.btn_confirm);
 		btnConfirm.setOnClickListener(new OnClickListener() {
-
-			private Context context;
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						context);
 				alertDialogBuilder
